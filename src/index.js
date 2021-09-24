@@ -12,6 +12,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 const port = process.env.port || 3000;
+const host = '0.0.0.0' || 'localhost';
 const publicDirectoryPath = path.join(__dirname, '../public');
 
 app.use(express.static(publicDirectoryPath));
@@ -71,6 +72,6 @@ io.on('connection', (socket) => {
     // });
 });
 
-server.listen(port, () => {
+server.listen(port, host, () => {
     console.log('Server is on port ', port);
 });
